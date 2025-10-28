@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About · Nefise Akcakir</title>
-<meta name="description" content="About · Nefise Akcakir">
+<meta name="description" content="About Nefise Akcakir">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%236aa9ff'/><text x='32' y='40' font-size='28' text-anchor='middle' fill='white' font-family='Arial'>N</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23a89f91'/><text x='32' y='40' font-size='28' text-anchor='middle' fill='white' font-family='Arial'>N</text></svg>">
 <style>
 * {
   margin: 0;
@@ -19,253 +19,277 @@
 body {
   font-family: 'Merriweather', Georgia, serif;
   line-height: 1.6;
-  color: #1a1a1a;
-  background: #FAF8F3;
-  padding-bottom: 120px;
+  color: #2d2d2d;
+  background: linear-gradient(to bottom, #faf8f5 0%, #f5f0eb 100%);
+  min-height: 100vh;
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(200, 200, 200, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+header {
+  padding: 2rem 0;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d2d2d;
+  text-decoration: none;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
-  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
 }
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.nav-links a {
+  color: #666;
   text-decoration: none;
-  color: #333;
-  transition: all 0.3s ease;
-  padding: 0.25rem;
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
 
-.nav-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+.nav-links a:hover {
+  color: #2d2d2d;
 }
 
-.nav-item:hover .nav-icon {
-  background: #437D5D;
-  transform: translateY(-4px);
+/* About Content */
+.about-container {
+  max-width: 1200px;
+  margin: 6rem auto 4rem;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
 }
 
-.nav-item:hover .nav-icon svg {
-  stroke: #fff;
+.about-text h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  color: #2d2d2d;
 }
 
-.nav-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: #333;
-  fill: none;
-  stroke-width: 2;
-  transition: stroke 0.3s ease;
-  display: block;
-  margin: auto;
+.name-underline {
+  text-decoration: underline;
+  text-decoration-color: #2d2d2d;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  position: relative;
+  cursor: help;
 }
 
-.nav-label {
-  font-size: 0.7rem;
-  margin-top: 0.25rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.name-underline::after {
+  content: "Pronounced 'Nefis-eh'";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d2d2d;
+  color: #faf8f5;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 400;
-  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
 
-.nav-item:hover .nav-label {
+.name-underline:hover::after {
   opacity: 1;
 }
 
-main {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 5rem 2rem 4rem;
-}
-
-h1 {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-  color: #1a1a1a;
-}
-
-h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
-}
-
-.lead {
-  font-size: 1.1rem;
+.about-text p {
+  font-size: 1.05rem;
   line-height: 1.8;
-  color: #555;
-  margin-bottom: 3rem;
-}
-
-.section {
-  margin-bottom: 3rem;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 2rem;
-  border-radius: 8px;
+  color: #666;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+.about-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-li {
-  padding: 0.5rem 0;
-  color: #555;
-}
-
-li:before {
-  content: "→ ";
-  color: #437D5D;
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.75rem;
-  background: #437D5D;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 400;
-  transition: all 0.2s;
-  margin-right: 0.75rem;
-  margin-top: 0.5rem;
+/* Social Links Bottom */
+.social-section {
+  max-width: 1200px;
+  margin: 6rem auto 4rem;
+  padding: 0 3rem;
   text-align: center;
 }
 
-.btn:hover {
-  background: #356449;
-  transform: translateY(-2px);
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.btn.secondary {
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   background: transparent;
-  color: #437D5D;
-  border: 1.5px solid #437D5D;
+  border: 1.5px solid #d4cfc7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #2d2d2d;
+  transition: all 0.3s;
 }
 
-.btn.secondary:hover {
-  background: #437D5D;
-  color: #fff;
+.social-icon:hover {
+  background: #2d2d2d;
+  border-color: #2d2d2d;
+  color: #faf8f5;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+footer {
+  max-width: 1200px;
+  margin: 4rem auto 2rem;
+  padding: 2rem 3rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+@media (max-width: 968px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about-image {
+    order: -1;
+    margin: 0 auto;
+  }
+  
+  .about-text h1 {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .bottom-nav {
-    padding: 0.6rem 1.25rem;
-  }
-  
-  .nav-links {
-    gap: 1rem;
-  }
-  
-  .nav-icon {
-    width: 44px;
-    height: 44px;
+  nav, .about-container, .social-section, footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 </style>
 </head>
 <body>
-    
-<main>
-  <h1>Design through clarity and curiosity.</h1>
-  <p class="lead">Over the past year and a half, I've led design for new businesses that trusted me to shape their first digital presence — projects that taught me how to iterate fast, listen deeply, and design systems that tell stories.</p>
 
-  <div class="section">
-    <div class="card">
-      <h3>Highlights</h3>
-      <ul>
-        <li>Lead UI/UX Designer at student-run Qamar Agency</li>
-        <li>Experienced in Figma, Figma Make, Framer, and AI-assisted design workflows</li>
-        <li>Translating complexity into clear, human-centered experiences</li>
-      </ul>
-    </div>
+<header class="fade-in">
+  <nav>
+    <a class="logo" href="index.html">Nefise Akcakir</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <div class="card">
-      <h3>Links</h3>
-      <a class="btn" href="resume.pdf" download="Nefise_Akcakir_Resume.pdf" aria-label="Download Resume">Download Resume</a>
-      <a class="btn secondary" href="https://www.linkedin.com/in/nefise-akcakir-06b454230" target="_blank" aria-label="Open LinkedIn">LinkedIn</a>
-    </div>
+<div class="about-container">
+  <div class="about-text fade-in delay-1">
+    <h1>I'm <span class="name-underline">Nefise</span></h1>
+    <p>I'm a designer and filmmaker with a background in kinesiology. I'm drawn to hands-on, fast-paced projects that merge creativity, problem-solving, and storytelling. I've designed for new businesses, service-based companies, and lifestyle brands, helping them turn ideas into experiences that feel thoughtful and human.</p>
+    <p>My approach is exploratory — I learn by doing, testing, and iterating. Whether it's shaping a visual identity or building a digital product, I focus on creating work that connects people and communicates clearly.</p>
   </div>
-</main>
+  
+  <div class="fade-in delay-2">
+    <img src="images/nefise_photo.jpg" alt="Nefise with parrot" class="about-image">
+  </div>
+</div>
 
-<nav class="bottom-nav">
-  <div class="nav-links">
-    <a href="index.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Home</span>
+<section class="social-section fade-in delay-3">
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/nefise-akcakir-06b454230" target="_blank" class="social-icon" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
     </a>
-    <a href="work.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-      </div>
-      <span class="nav-label">Work</span>
+    
+    <a href="https://youtube.com/@nefiseakcakir?si=nVl3fhd7MuA59o3o" target="_blank" class="social-icon" aria-label="YouTube">
+      <svg viewBox="0 0 24 24">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+      </svg>
     </a>
-    <a href="about.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
-      <span class="nav-label">About</span>
+    
+    <a href="https://www.instagram.com/bynefise/" target="_blank" class="social-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
     </a>
-    <a href="contact.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Contact</span>
+    
+    <a href="mailto:nefise.akcakir@gmail.com" class="social-icon" aria-label="Email">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </a>
+    
+    <a href="resume.pdf" download="Nefise_Akcakir_Resume.pdf" class="social-icon" aria-label="Resume">
+      <svg viewBox="0 0 24 24">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+      </svg>
     </a>
   </div>
-</nav>
-    
+</section>
+
+<footer>
+  <p>© 2025 Nefise Akcakir · Designed & Built with Care</p>
+</footer>
+
 </body>
 </html>
