@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revert Reach Case Study · Nefise Akcakir</title>
+<meta name="description" content="Revert Reach Case Study · Nefise Akcakir">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%236aa9ff'/><text x='32' y='40' font-size='28' text-anchor='middle' fill='white' font-family='Arial'>N</text></svg>">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Merriweather', Georgia, serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #FAF8F3;
+  padding-bottom: 120px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(200, 200, 200, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  padding: 0.25rem;
+}
+
+.nav-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+  background: #437D5D;
+  transform: translateY(-4px);
+}
+
+.nav-item:hover .nav-icon svg {
+  stroke: #fff;
+}
+
+.nav-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #333;
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+  display: block;
+  margin: auto;
+}
+
+.nav-label {
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 400;
+  text-align: center;
+}
+
+.nav-item:hover .nav-label {
+  opacity: 1;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #437D5D;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  color: #1a1a1a;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.case-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .bottom-nav {
+    padding: 0.6rem 1.25rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+</style>
+</head>
+<body>
+    
+<main>
+  <span class="kicker">Case Study</span>
+  <h1>Revert Reach — Building a Digital Home for Reverts</h1>
+  <p class="lead">Designing a digital ecosystem that adapts as it grows.</p>
+
+  <img class="case-image" alt="Revert Reach hero collage" src="images/RR_HP_mockup.png">
+
+  <h2>Overview</h2>
+  <p>Revert Reach came to us with a clear vision but evolving needs. They wanted a website that didn't just exist alongside their app — it needed to <em>represent</em> their growing ecosystem of products: <strong>Companion Connect, Minara AI, The Lantern, and the Revert Reach Shop</strong>. Initially imagined as a functional platform for users to access these tools directly, the concept later evolved into a <strong>promotional and informational site</strong> designed to inspire users to download the app.</p>
+  <p>As the <strong>lead UI/UX designer</strong>, I was responsible for translating this evolving brand identity into a clear, intuitive, and emotionally resonant experience.</p>
+
+  <h2>The Challenge</h2>
+  <p>Unlike Hiyd.ai, Revert Reach didn't start with a fixed direction. The brand's tone, structure, and even product priorities shifted throughout the process — which became both the main challenge and my biggest learning opportunity.</p>
+  <p>Early layouts were built to function like a product dashboard. Midway through, the team realized they wanted to position the site as a storytelling hub — a place that celebrated their values and guided visitors toward the app. That meant reworking the <strong>information hierarchy</strong>, CTAs, and overall flow to serve a new purpose while preserving the clarity and consistency we'd already built.</p>
+
+  <h2>Designing Through Change</h2>
+  <p>To stay adaptable, I focused on creating <strong>modular sections</strong> that could flex with evolving needs: hero blocks for each sub-brand, scannable feature grids, and repeatable CTA components.</p>
+  <p>The goal was to make every page feel distinct yet unified under the Revert Reach identity. I leaned on visual hierarchy, whitespace, and structured typography to balance storytelling with functionality. The product pages now feel cohesive, whether you're exploring Minara's AI tools or the Companion Connect tiers.</p>
+
+  <img class="case-image" alt="RR product layout iteration" src="images/Frame_39.png">
+
+  <h2>Tools & Iteration</h2>
+  <p>This project was a constant collaboration between the design and strategy teams. I used <strong>Figma</strong> and <strong>Figma Make</strong> to prototype and test responsive layouts quickly, incorporating feedback in real time.</p>
+  <p>To push creative boundaries, I also leveraged <strong>ChatGPT as a design assistant</strong> — testing different content flows, CTA placements, and phrasing options. It was my way of applying Shopify's "AI-builder mindset": using AI to extend design thinking, not automate it.</p>
+
+  <h2>Outcome</h2>
+  <p>The final website became a <strong>promotional bridge</strong> connecting Revert Reach's brand story to its growing app ecosystem. It now serves as the visual anchor for their digital presence, giving each sub-brand a clear voice while tying them together through consistent design language. The project has since launched successfully, with the client thrilled by how cohesive and purposeful it feels.</p>
+
+  <h2>Reflection</h2>
+  <p>Revert Reach taught me that good design is as much about <strong>adaptability</strong> as it is about structure. Working through shifting goals forced me to lead with curiosity rather than control — to ask better questions, anticipate change, and iterate without ego.</p>
+</main>
+
+<nav class="bottom-nav">
+  <div class="nav-links">
+    <a href="index.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+      <span class="nav-label">Home</span>
+    </a>
+    <a href="work.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <span class="nav-label">Work</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <span class="nav-label">About</span>
+    </a>
+    <a href="contact.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+      <span class="nav-label">Contact</span>
+    </a>
+  </div>
+</nav>
+    
+</body>
+</html>
