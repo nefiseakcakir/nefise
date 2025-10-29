@@ -103,27 +103,32 @@ nav {
 }
 
 .logo {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #2d2d2d;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.nav-links {
+.logo:hover {
+  color: #a89f91;
+}
+
+.top-nav-links {
   display: flex;
-  gap: 2.5rem;
-  list-style: none;
+  gap: 2rem;
 }
 
-.nav-links a {
-  color: #666;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
+.top-nav-links a {
   color: #2d2d2d;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.top-nav-links a:hover {
+  color: #a89f91;
 }
 
 /* About Content */
@@ -277,7 +282,6 @@ footer {
     <a href="index.html" class="logo">Nefise Akcakir</a>
     <div class="top-nav-links">
       <a href="about.html">About</a>
-      <a href="work.html">Work</a>
       <a href="resume.pdf" target="_blank">Resume</a>
     </div>
   </nav>
