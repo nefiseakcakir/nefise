@@ -21,6 +21,7 @@ body {
   line-height: 1.6;
   color: #2d2d2d;
   background: #faf8f5;
+  padding-bottom: 120px;
 }
 
 @keyframes fadeInUp {
@@ -198,30 +199,101 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(200, 200, 200, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.bottom-nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  padding: 0.25rem;
+}
+
+.nav-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+  background: #a89f91;
+  transform: translateY(-4px);
+}
+
+.nav-item:hover .nav-icon svg {
+  stroke: #fff;
+}
+
+.nav-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #333;
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+  display: block;
+  margin: auto;
+}
+
+.nav-label {
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 400;
+  text-align: center;
+}
+
+.nav-item:hover .nav-label {
+  opacity: 1;
+}
+
 </style>
 </head>
 <body>
 
-<header class="fade-in">
-  <nav>
-    <a class="logo" href="index.html">Nefise Akcakir</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-</header>
+
 
 <main>
   <span class="kicker fade-in delay-1">Case Study</span>
   <h1 class="fade-in delay-1">Hiyd.ai — Redesigning a Wearable's Digital Presence</h1>
   <p class="lead fade-in delay-2">Transforming a simple WordPress site into a dynamic product launch experience.</p>
 
-  <video class="case-video fade-in delay-3" controls autoplay muted loop playsinline>
-    <source src="images/hiyd_hp_hero.mp4" type="video/mp4">
-    <source src="images/hiyd_hp_hero.mov" type="video/quicktime">
-    Your browser does not support the video tag.
-  </video>
+  <iframe
+    src="https://player.mux.com/supqL01N2dxjnXsX4001AwFsY48lnw1NoSbGBwNqbdmBY?metadata-video-title=hiyd_hp_hero&video-title=hiyd_hp_hero"
+    style="width: 100%; max-width: 900px; border: none; aspect-ratio: 756/491; border-radius: 8px; margin: 2.5rem 0; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen
+    class="fade-in delay-3"
+  ></iframe>
 
   <div class="fade-in delay-4">
     <h2>Overview</h2>
@@ -271,6 +343,40 @@ footer {
 <footer>
   <p>© 2025 Nefise Akcakir · Designed & Built with Care</p>
 </footer>
+
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav">
+  <div class="nav-links">
+    <a href="index.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+      <span class="nav-label">Home</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <span class="nav-label">About</span>
+    </a>
+    <a href="mailto:nefise.akcakir@gmail.com" class="nav-item">
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+      <span class="nav-label">Contact</span>
+    </a>
+  </div>
+</nav>
 
 </body>
 </html>
