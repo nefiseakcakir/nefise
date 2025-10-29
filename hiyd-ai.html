@@ -21,7 +21,51 @@ body {
   line-height: 1.6;
   color: #2d2d2d;
   background: #faf8f5;
-  padding-bottom: 120px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    repeating-linear-gradient(90deg, #d4cfc7 0px, #d4cfc7 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, #d4cfc7 0px, #d4cfc7 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(90deg, #a89f91 0px, #a89f91 2px, transparent 2px, transparent 320px),
+    repeating-linear-gradient(0deg, #a89f91 0px, #a89f91 2px, transparent 2px, transparent 320px);
+  background-size: 80px 80px, 80px 80px, 320px 320px, 320px 320px;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  background-image: 
+    repeating-linear-gradient(90deg, rgba(212, 207, 199, 0.9) 0px, rgba(212, 207, 199, 0.9) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, rgba(212, 207, 199, 0.9) 0px, rgba(212, 207, 199, 0.9) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(90deg, rgba(168, 159, 145, 1) 0px, rgba(168, 159, 145, 1) 2px, transparent 2px, transparent 320px),
+    repeating-linear-gradient(0deg, rgba(168, 159, 145, 1) 0px, rgba(168, 159, 145, 1) 2px, transparent 2px, transparent 320px);
+  background-size: 80px 80px, 80px 80px, 320px 320px, 320px 320px;
+  mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+}
+
+main, footer, .bottom-nav {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -44,6 +88,52 @@ body {
 .delay-2 { animation-delay: 0.4s; }
 .delay-3 { animation-delay: 0.6s; }
 .delay-4 { animation-delay: 0.8s; }
+
+/* Top Header Navigation */
+.top-header {
+  padding: 2rem 3rem;
+  position: relative;
+  z-index: 100;
+}
+
+.top-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d2d2d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #a89f91;
+}
+
+.top-nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.top-nav-links a {
+  color: #2d2d2d;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.top-nav-links a:hover {
+  color: #a89f91;
+}
+
+
 
 header {
   padding: 2rem 0;
@@ -86,6 +176,43 @@ main {
   max-width: 900px;
   margin: 4rem auto;
   padding: 0 3rem;
+}
+
+.case-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 3rem;
+}
+
+.case-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.case-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #2d2d2d;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto 0;
 }
 
 .kicker {
@@ -200,102 +327,38 @@ footer {
   }
 }
 
-/* Bottom Navigation */
-.bottom-nav {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(200, 200, 200, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-}
 
-.bottom-nav .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #333;
-  transition: all 0.3s ease;
-  padding: 0.25rem;
-}
-
-.nav-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover .nav-icon {
-  background: #a89f91;
-  transform: translateY(-4px);
-}
-
-.nav-item:hover .nav-icon svg {
-  stroke: #fff;
-}
-
-.nav-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: #333;
-  fill: none;
-  stroke-width: 2;
-  transition: stroke 0.3s ease;
-  display: block;
-  margin: auto;
-}
-
-.nav-label {
-  font-size: 0.7rem;
-  margin-top: 0.25rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-weight: 400;
-  text-align: center;
-}
-
-.nav-item:hover .nav-label {
-  opacity: 1;
-}
 
 </style>
 </head>
 <body>
 
+<header class="top-header">
+  <nav class="top-nav">
+    <a href="index.html" class="logo">Nefise Akcakir</a>
+    <div class="top-nav-links">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="resume.pdf" target="_blank">Resume</a>
+    </div>
+  </nav>
+</header>
+
+
+
 
 
 <main>
+  <div class="case-hero">
+    <span class="case-label">Case Study 01</span>
+    <img src="images/hiyd_hero.png" alt="Hiyd.ai" class="hero-image">
+  </div>
+  
   <span class="kicker fade-in delay-1">Case Study</span>
   <h1 class="fade-in delay-1">Hiyd.ai — Redesigning a Wearable's Digital Presence</h1>
   <p class="lead fade-in delay-2">Transforming a simple WordPress site into a dynamic product launch experience.</p>
 
-  <iframe
-    src="https://player.mux.com/supqL01N2dxjnXsX4001AwFsY48lnw1NoSbGBwNqbdmBY?metadata-video-title=hiyd_hp_hero&video-title=hiyd_hp_hero"
-    style="width: 100%; max-width: 900px; border: none; aspect-ratio: 756/491; border-radius: 8px; margin: 2.5rem 0; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);"
-    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-    allowfullscreen
-    class="fade-in delay-3"
-  ></iframe>
-
-  <div class="fade-in delay-4">
+  <div class="fade-in delay-3">
     <h2>Overview</h2>
     <p>When Hiyd.ai reached out, their WordPress site felt too basic for a product positioned at the intersection of health and technology. They were preparing for launch and wanted a web experience that matched the sophistication of their wearable. As the <strong>lead UI/UX designer</strong>, I had full creative freedom to reimagine how the product should be presented and how users would experience it online.</p>
 
@@ -310,11 +373,12 @@ footer {
     </ul>
     <p>Drawing from sleek fitness brands like Oura and Whoop, I introduced <strong>motion, subtle interactions, and visual rhythm</strong> to guide attention. A dark, high-contrast palette replaced the flat white backdrop, giving the hardware an elegant stage presence. Typography became central to the brand's tone — clean and confident without losing warmth.</p>
 
-    <video class="case-video" controls muted loop playsinline>
-      <source src="images/hiyd_demo.mp4" type="video/mp4">
-      <source src="images/hiyd_demo.mov" type="video/quicktime">
-      Your browser does not support the video tag.
-    </video>
+    <iframe
+      src="https://player.mux.com/supqL01N2dxjnXsX4001AwFsY48lnw1NoSbGBwNqbdmBY?metadata-video-title=hiyd_hp_hero&video-title=hiyd_hp_hero"
+      style="width: 100%; max-width: 900px; border: none; aspect-ratio: 756/491; border-radius: 8px; margin: 2.5rem 0; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+      allowfullscreen
+    ></iframe>
 
     <h2>Before & After</h2>
     <div class="comparison">
@@ -345,38 +409,16 @@ footer {
 </footer>
 
 
-<!-- Bottom Navigation -->
-<nav class="bottom-nav">
-  <div class="nav-links">
-    <a href="index.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Home</span>
-    </a>
-    <a href="about.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
-      <span class="nav-label">About</span>
-    </a>
-    <a href="mailto:nefise.akcakir@gmail.com" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Contact</span>
-    </a>
-  </div>
-</nav>
+
+
+<script>
+document.addEventListener('mousemove', (e) => {
+  document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+  document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+});
+document.body.style.setProperty('--mouse-x', '50%');
+document.body.style.setProperty('--mouse-y', '50%');
+</script>
 
 </body>
 </html>

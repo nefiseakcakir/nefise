@@ -22,7 +22,64 @@ body {
   color: #2d2d2d;
   background: #faf8f5;
   overflow-x: hidden;
-  padding-bottom: 120px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+/* Base grid - dim but visible */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    /* Small grid lines */
+    repeating-linear-gradient(90deg, #d4cfc7 0px, #d4cfc7 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, #d4cfc7 0px, #d4cfc7 1px, transparent 1px, transparent 80px),
+    /* Thicker roads every 4 blocks */
+    repeating-linear-gradient(90deg, #a89f91 0px, #a89f91 2px, transparent 2px, transparent 320px),
+    repeating-linear-gradient(0deg, #a89f91 0px, #a89f91 2px, transparent 2px, transparent 320px);
+  background-size: 80px 80px, 80px 80px, 320px 320px, 320px 320px;
+}
+
+/* Lit-up grid layer that follows mouse */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  background-image: 
+    /* Bright small grid */
+    repeating-linear-gradient(90deg, rgba(212, 207, 199, 0.9) 0px, rgba(212, 207, 199, 0.9) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, rgba(212, 207, 199, 0.9) 0px, rgba(212, 207, 199, 0.9) 1px, transparent 1px, transparent 80px),
+    /* Bright thick roads */
+    repeating-linear-gradient(90deg, rgba(168, 159, 145, 1) 0px, rgba(168, 159, 145, 1) 2px, transparent 2px, transparent 320px),
+    repeating-linear-gradient(0deg, rgba(168, 159, 145, 1) 0px, rgba(168, 159, 145, 1) 2px, transparent 2px, transparent 320px);
+  background-size: 80px 80px, 80px 80px, 320px 320px, 320px 320px;
+  mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  transition: mask-position 0.1s ease;
+}
+
+/* Make content appear above background */
+.hero, .projects, footer, .bottom-nav, .social-sidebar {
+  position: relative;
+  z-index: 1;
+}
+
+.hero > *, .projects > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* Fade-in animations */
@@ -47,81 +104,51 @@ body {
 .delay-3 { animation-delay: 0.6s; }
 .delay-4 { animation-delay: 0.8s; }
 
-/* Bottom Navigation */
-.bottom-nav {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(200, 200, 200, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+/* Top Header Navigation */
+.top-header {
+  padding: 2rem 3rem;
+  position: relative;
+  z-index: 100;
 }
 
-.nav-links {
+.top-nav {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  gap: 1.5rem;
+  justify-content: space-between;
   align-items: center;
-  list-style: none;
 }
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d2d2d;
   text-decoration: none;
-  color: #333;
-  transition: all 0.3s ease;
-  padding: 0.25rem;
+  transition: color 0.3s ease;
 }
 
-.nav-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+.logo:hover {
+  color: #a89f91;
+}
+
+.top-nav-links {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  gap: 2rem;
 }
 
-.nav-item:hover .nav-icon {
-  background: #a89f91;
-  transform: translateY(-4px);
-}
-
-.nav-item:hover .nav-icon svg {
-  stroke: #fff;
-}
-
-.nav-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: #333;
-  fill: none;
-  stroke-width: 2;
-  transition: stroke 0.3s ease;
-  display: block;
-  margin: auto;
-}
-
-.nav-label {
-  font-size: 0.7rem;
-  margin-top: 0.25rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.top-nav-links a {
+  color: #2d2d2d;
+  text-decoration: none;
+  font-size: 1rem;
   font-weight: 400;
-  text-align: center;
+  transition: color 0.3s ease;
 }
 
-.nav-item:hover .nav-label {
-  opacity: 1;
+.top-nav-links a:hover {
+  color: #a89f91;
 }
+
+
 
 /* Hero Section */
 .hero {
@@ -249,29 +276,45 @@ h1 {
 }
 
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
 }
 
 .project-card {
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
 }
 
 .project-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  background: #f0ede8;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.case-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.case-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #2d2d2d;
 }
 
 .project-tags {
@@ -354,6 +397,17 @@ footer {
 </head>
 <body>
 
+<header class="top-header">
+  <nav class="top-nav">
+    <a href="index.html" class="logo">Nefise Akcakir</a>
+    <div class="top-nav-links">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="resume.pdf" target="_blank">Resume</a>
+    </div>
+  </nav>
+</header>
+
 <section class="hero fade-in delay-1">
   <div class="hero-content">
     <h1 class="fade-in delay-1">Hi, I'm Nefise!</h1>
@@ -397,7 +451,8 @@ footer {
   
   <div class="project-grid">
     <a href="hiyd-ai.html" class="project-card">
-      <img src="images/Hiyd_HP.jpg" alt="Hiyd.ai project" class="project-image">
+      <span class="case-label">Case Study 01</span>
+      <img src="images/hiyd_hero.png" alt="Hiyd.ai project" class="project-image">
       <div class="project-tags">
         <span class="tag">UI/UX Design</span>
         <span class="tag">Web Design</span>
@@ -407,7 +462,8 @@ footer {
     </a>
     
     <a href="revert-reach.html" class="project-card">
-      <img src="images/RR_products.jpg" alt="Revert Reach project" class="project-image">
+      <span class="case-label">Case Study 02</span>
+      <img src="images/rr_hero.svg" alt="Revert Reach project" class="project-image">
       <div class="project-tags">
         <span class="tag">UI/UX Design</span>
         <span class="tag">Design Systems</span>
@@ -422,38 +478,16 @@ footer {
   <p>© 2025 Nefise Akcakir · Designed & Built with Care</p>
 </footer>
 
-<!-- Bottom Navigation -->
-<nav class="bottom-nav fade-in delay-4">
-  <div class="nav-links">
-    <a href="index.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Home</span>
-    </a>
-    <a href="about.html" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
-      <span class="nav-label">About</span>
-    </a>
-    <a href="mailto:nefise.akcakir@gmail.com" class="nav-item">
-      <div class="nav-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-      </div>
-      <span class="nav-label">Contact</span>
-    </a>
-  </div>
-</nav>
+
+
+<script>
+document.addEventListener('mousemove', (e) => {
+  document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+  document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+});
+document.body.style.setProperty('--mouse-x', '50%');
+document.body.style.setProperty('--mouse-y', '50%');
+</script>
 
 </body>
 </html>

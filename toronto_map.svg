@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" viewBox="0 0 2000 2000">
+  <!-- Toronto-inspired grid with some diagonal roads -->
+  <defs>
+    <pattern id="torontoGrid" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <!-- Main grid (like Toronto's blocks) -->
+      <line x1="0" y1="0" x2="0" y2="200" stroke="#d4cfc7" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="200" y2="0" stroke="#d4cfc7" stroke-width="0.5"/>
+      
+      <!-- Thicker roads every 4 blocks -->
+      <line x1="100" y1="0" x2="100" y2="200" stroke="#a89f91" stroke-width="1"/>
+      <line x1="0" y1="100" x2="200" y2="100" stroke="#a89f91" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Base grid -->
+  <rect width="2000" height="2000" fill="url(#torontoGrid)"/>
+  
+  <!-- Diagonal roads (like University Ave, Spadina) with army green hints -->
+  <line x1="0" y1="400" x2="2000" y2="600" stroke="#8b9a7e" stroke-width="2" opacity="0.3"/>
+  <line x1="400" y1="0" x2="800" y2="2000" stroke="#8b9a7e" stroke-width="1.5" opacity="0.25"/>
+  <line x1="1200" y1="0" x2="1600" y2="2000" stroke="#a89f91" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Curved road (like Lakeshore) -->
+  <path d="M 0 1400 Q 500 1350, 1000 1380 T 2000 1420" 
+        stroke="#8b9a7e" stroke-width="2" fill="none" opacity="0.25"/>
+  
+  <!-- Connection paths between sections -->
+  <line x1="100" y1="0" x2="100" y2="2000" stroke="#a89f91" stroke-width="1.5" opacity="0.2"/>
+  <line x1="0" y1="800" x2="2000" y2="800" stroke="#8b9a7e" stroke-width="1.5" opacity="0.2"/>
+</svg>
